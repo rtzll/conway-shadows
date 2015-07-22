@@ -1,3 +1,4 @@
+require 'color'
 
 # The bitmap object.
 # A 2D array with rgb values as entries.
@@ -7,7 +8,7 @@ class Bitmap
   def initialize(width, height)
     @data = Array.new(width) do
       Array.new(height) do
-        [rand(255), rand(255), rand(255)]
+        RandomColor.new
       end
     end
   end
