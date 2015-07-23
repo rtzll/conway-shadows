@@ -6,6 +6,10 @@ class Color
   def initialize(r, g, b)
     @r, @g, @b = r, g, b
   end
+
+  def to_s
+    "#{r}, #{g}, #{b}"
+  end
 end
 
 class RandomColor < Color
