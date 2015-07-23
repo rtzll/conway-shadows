@@ -17,14 +17,11 @@ class Bitmap
   def enlarge(factor)
     enlarged_data = Array.new(factor * @data[0].length) { [] }
     @data.each_with_index do |row, row_index|
-      shift = 0
-      0.upto(factor) do |i|
-        factor.times {enlarged_data[row_index+shift] << row }
-        shift += i
+      row.each do |entry|
+        factor.times { enlarged_data[row_index] << entry }
       end
     end
-    puts enlarged_data[0].to_s
-    puts enlarged_data[0].length
+    puts enlarged_data.to_s
     @data = enlarged_data
   end
 end

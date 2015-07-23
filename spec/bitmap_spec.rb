@@ -27,7 +27,7 @@ RSpec.describe Bitmap, "#enlarge" do
       # check length
       expect(bitmap.data.length).to eq width*factor
       expect(bitmap.data[0].length).to eq height*factor
-      # check values
+      # TODO check values for every row
       expect(bitmap.data[0]).to eq [color, color] * factor
     end
   end
