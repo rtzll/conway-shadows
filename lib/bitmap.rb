@@ -15,13 +15,15 @@ class Bitmap
 
   # Enlarge the data by a given factor.
   def enlarge(factor)
-    enlarged_data = Array.new(factor * @data[0].length) { [] }
+    enlarged_data = Array.new(@data[0].length) { [] }
     @data.each_with_index do |row, row_index|
       row.each do |entry|
         factor.times { enlarged_data[row_index] << entry }
       end
     end
-    puts enlarged_data.to_s
-    @data = enlarged_data
+    0.upto(factor*@data.length - 1) do |index|
+      @data[index] = enlarged_data[index/factor]
+    end
   end
+
 end
