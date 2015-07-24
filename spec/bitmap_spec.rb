@@ -24,11 +24,10 @@ RSpec.describe Bitmap, "#enlarge" do
     it "enlarging a 2x2 bitmap by 2 will yield a 4x4 bitmap." do
       bitmap = Bitmap.new width, height, color
       bitmap.enlarge 2
-      # check length
       expect(bitmap.data.length).to eq width*factor
-      expect(bitmap.data[0].length).to eq height*factor
-      # TODO check values for every row
-      expect(bitmap.data[0]).to eq [color, color] * factor
+      (height*factor).times do |index|
+        expect(bitmap.data[index].length).to eq height*factor
+      end
     end
   end
 end
