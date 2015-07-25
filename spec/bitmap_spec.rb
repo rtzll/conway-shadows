@@ -1,33 +1,36 @@
 require 'bitmap'
 require 'color'
 
-RSpec.describe Bitmap, "#init" do
-  context "With a given width and height" do
-    width, height = 2, 2
-    it "initializes a 2D array with given width and height" do
-      bitmap = Bitmap.new width, height
-      expect(bitmap.data.length).to eq width
-      expect(bitmap.data[0].length).to eq height
+describe Bitmap do
+
+  width, height = 2, 2
+  factor = 2
+
+  before(:each) do
+    @bitmap = Bitmap.new width, height
+  end
+
+  describe "when initialized" do
+    it "should have the correct width and height" do
+      expect(@bitmap.data.length).to eq width
+      expect(@bitmap.data[0].length).to eq height
     end
-    it "initializes a 2D array with random color" do
-      bitmap = Bitmap.new width, height
-      expect(bitmap.data[0][0]).to be_a RandomColor
+    it "should have random color entries" do
+      expect(@bitmap.data[0][0]).to be_a RandomColor
     end
   end
-end
 
-
-RSpec.describe Bitmap, "#enlarge" do
-  context "With a given width, height and color" do
-    width, height, factor = 2, 2, 2
-    color = Color.new 1, 2, 3
-    it "enlarging a 2x2 bitmap by 2 will yield a 4x4 bitmap." do
-      bitmap = Bitmap.new width, height, color
-      bitmap.enlarge 2
-      expect(bitmap.data.length).to eq width*factor
+  describe "when enlarged" do
+    before(:each) do
+      @bitmap.enlarge factor
+    end
+    it "should be factor times greater in width and height." do
+      expect(@bitmap.data.length).to eq width*factor
       (height*factor).times do |index|
-        expect(bitmap.data[index].length).to eq height*factor
+        expect(@bitmap.data[index].length).to eq height*factor
       end
     end
   end
 end
+
+# TODO add tests for width and heigth stretch
