@@ -38,4 +38,15 @@ class Bitmap
     @data, @height = stretched, @height*factor
   end
 
+  def write_to_file(filename)
+    img = Magick::Image.new(@width, @height)
+
+    @data.each_with_index do |row, row_index|
+      row.each_with_index do |item, column_index|
+        img.pixel_color(row_index, column_index, "rgb(#{item.to_l.join(', ')})")
+      end
+    end
+    img.write(filename)
+  end
+
 end
