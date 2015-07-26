@@ -1,17 +1,35 @@
 require 'color'
 
-RSpec.describe Color, "#to_s" do
-  it "converts the color to a string with r, g, b (in that order)" do
-    color = Color.new 1, 2, 3
-    expect(color.to_s).to eq "1, 2, 3"
+describe Color do
+  before(:each) do
+    @color = Color.new 1, 2, 3
+  end
+
+  describe "when converted to string" do
+    it "should equal the string with 'r, g, b' (in that order)" do
+      expect(@color.to_s).to eq "1, 2, 3"
+    end
+  end
+
+  describe "when converted to list" do
+    it "should equal the list [r, g, b] (in that order)" do
+      expect(@color.to_l).to eq [1, 2, 3]
+    end
   end
 end
 
-RSpec.describe RandomColor, "#init" do
-  it "initializes a rgb color with values between 0 and 255" do
-    color = RandomColor.new
-    expect(color.r).to be_within(128).of 128
-    expect(color.g).to be_within(128).of 128
-    expect(color.b).to be_within(128).of 128
+describe RandomColor do
+  before(:each) do
+    @color = RandomColor.new
+  end
+  def to_be_between_0_and_255(expected)
+    0 <= expected and expected <= 255
+  end
+  describe "when initialized" do
+    it "should have entries with values between 0 and 255" do
+      expect(to_be_between_0_and_255(@color.r))
+      expect(to_be_between_0_and_255(@color.g))
+      expect(to_be_between_0_and_255(@color.b))
+    end
   end
 end
