@@ -10,6 +10,10 @@ class Color
   def to_s
     "#{r}, #{g}, #{b}"
   end
+
+  def to_l
+    [@r, @g, @b]
+  end
 end
 
 class RandomColor < Color
