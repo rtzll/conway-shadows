@@ -5,36 +5,38 @@ require 'color'
 class Bitmap
   attr_reader :data
 
-  def initialize(width, height, color=nil)
+  def initialize(width, height)
     @data = Array.new(width) do
       Array.new(height) do
-        color || RandomColor.new
+        RandomColor.new
       end
     end
   end
 
   # Enlarge the data by a given factor.
   def enlarge(factor)
-    widened_data = stretch_width @data[0].length, factor
-    @data = stretch_height @data.length, factor, widened_data
+    stretch_width factor
+    stretch_height factor
   end
 
-  def stretch_width(width, factor)
+  def stretch_width(factor)
+    width = @data[0].length
     stretched = Array.new(width) { [] }
     @data.each_with_index do |row, row_index|
       row.each do |entry|
         factor.times { stretched[row_index] << entry }
       end
     end
-    stretched
+    @data = stretched
   end
 
-  def stretch_height(height, factor, data)
+  def stretch_height(factor)
+    height = @data.length
     stretched = Array.new(height) { [] }
     (factor*height).times do |index|
-      stretched[index] = data[index/factor]
+      stretched[index] = @data[index/factor]
     end
-    stretched
+    @data = stretched
   end
 
 end
