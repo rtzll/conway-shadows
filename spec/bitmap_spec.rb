@@ -25,12 +25,34 @@ describe Bitmap do
       @bitmap.enlarge factor
     end
     it "should be factor times greater in width and height." do
-      expect(@bitmap.data.length).to eq width*factor
+      expect(@bitmap.data.length).to eq height*factor
       (height*factor).times do |index|
-        expect(@bitmap.data[index].length).to eq height*factor
+        expect(@bitmap.data[index].length).to eq width*factor
+      end
+    end
+  end
+
+  describe "when the bitmaps width is stretch" do
+    before(:each) do
+      @bitmap.stretch_width factor
+    end
+    it "should be factor times greater in width and the same in height" do
+      expect(@bitmap.data.length).to eq height
+      (height).times do |index|
+        expect(@bitmap.data[index].length).to eq width*factor
+      end
+    end
+  end
+
+  describe "when the bitmaps height is stretch" do
+    before(:each) do
+      @bitmap.stretch_height factor
+    end
+    it "should be factor times greater in height and the same in width" do
+      expect(@bitmap.data.length).to eq height*factor
+      (height*factor).times do |index|
+        expect(@bitmap.data[index].length).to eq width
       end
     end
   end
 end
-
-# TODO add tests for width and heigth stretch
