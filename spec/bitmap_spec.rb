@@ -5,6 +5,7 @@ describe Bitmap do
 
   width, height = 2, 2
   factor = 2
+  image_name = "bitmap.bmp"
 
   before(:each) do
     @bitmap = Bitmap.new width, height
@@ -57,6 +58,18 @@ describe Bitmap do
       (height*factor).times do |index|
         expect(@bitmap.width).to eq width
       end
+    end
+  end
+
+  describe "when the bitmap is written as image" do
+    before(:each) do
+      @bitmap.to_image image_name
+    end
+    it "should exist as a file" do
+      expect File.exist?(image_name)
+    end
+    after(:each) do
+      File.delete image_name
     end
   end
 end
