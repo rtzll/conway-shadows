@@ -1,4 +1,5 @@
 require 'color'
+require 'rmagick'
 
 # The bitmap object.
 # A 2D array with rgb values as entries.
