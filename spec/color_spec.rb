@@ -27,9 +27,9 @@ describe RandomColor do
   end
   describe "when initialized" do
     it "should have entries with values between 0 and 255" do
-      expect(to_be_between_0_and_255(@color.r))
-      expect(to_be_between_0_and_255(@color.g))
-      expect(to_be_between_0_and_255(@color.b))
+      expect to_be_between_0_and_255(@color.r)
+      expect to_be_between_0_and_255(@color.g)
+      expect to_be_between_0_and_255(@color.b)
     end
   end
 end
