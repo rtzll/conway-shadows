@@ -72,4 +72,16 @@ describe Bitmap do
       File.delete image_name
     end
   end
+
+  describe "when a separator is added" do
+    white_pixel = Color.new(255, 255, 255)
+    every_n = 1
+    before(:each) do
+      @bitmap.add_separator every_n, white_pixel
+    end
+    it "should have been stretched in heigth and width" do
+      expect(@bitmap.width).to be eq width * every_n - 1
+      expect(@bitmap.width).to be eq height * every_n - 1
+    end
+  end
 end
