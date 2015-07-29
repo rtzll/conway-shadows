@@ -83,5 +83,14 @@ describe Bitmap do
       expect(@bitmap.width).to be eq width * every_n_pixels - 1
       expect(@bitmap.width).to be eq height * every_n_pixels - 1
     end
+    it "should have a white pixels every n pixels" do
+      @bitmap.each do |row|
+        row.each do |entry|
+          if true # TODO base condition on every_n_pixel
+            expect(entry).to be eq white_pixel
+          end
+        end
+      end
+    end
   end
 end
