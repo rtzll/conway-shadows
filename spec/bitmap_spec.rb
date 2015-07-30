@@ -73,8 +73,13 @@ describe Bitmap do
     end
   end
 
+  # TODO build list of ints using generator and check if index is in list
+  def is_separator(index)
+    false
+  end
+
   describe "when a separator is added" do
-    white_pixel = Color.new(255, 255, 255)
+    white_pixel = Color.new 255, 255, 255
     every_n_pixels = 1
     before(:each) do
       @bitmap.add_separator every_n_pixels, white_pixel
@@ -84,9 +89,9 @@ describe Bitmap do
       expect(@bitmap.width).to be eq height * every_n_pixels - 1
     end
     it "should have a white pixels every n pixels" do
-      @bitmap.each do |row|
-        row.each do |entry|
-          if true # TODO base condition on every_n_pixel
+      @bitmap.each_with_index do |row, row_index|
+        row.each_with_index do |entry, column_index|
+          if is_separator row_index or is_separator column_index
             expect(entry).to be eq white_pixel
           end
         end
