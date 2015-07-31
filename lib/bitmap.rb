@@ -39,6 +39,11 @@ class Bitmap
     @data, @height = stretched, @height*factor
   end
 
+  # TODO transform data
+  def add_separator(every_n_pixels, color)
+    @data
+  end
+
   def to_image(imagename)
     img = Magick::Image.new(@width, @height)
     @data.each_with_index do |row, row_index|
