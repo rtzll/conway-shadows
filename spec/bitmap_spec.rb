@@ -84,13 +84,13 @@ describe Bitmap do
       expect(@bitmap.width).to eq(height * $every_n_pixels - 1)
     end
     def separator?(index)
-      index % $every_n_pixels + 1 == 0
+      index % ($every_n_pixels + 1) == 0
     end
     it "should have a white pixels every n pixels" do
       @bitmap.data.each_with_index do |row, row_index|
         row.each_with_index do |entry, column_index|
           if separator? row_index or separator? column_index
-            expect(entry).to be eq white_pixel
+            expect(entry).to eq white_pixel
           end
         end
       end
