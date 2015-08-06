@@ -8,8 +8,8 @@ describe Conway do
 
   describe "when initialized" do
     it "should have the correct field dimensions" do
-      expect(@conway.field.width).to eq 53
-      expect(@conway.field.heigth).to eq 7
+      expect(@conway.grid.width).to eq 53
+      expect(@conway.grid.heigth).to eq 7
     end
   end
 end
