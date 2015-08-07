@@ -8,9 +8,9 @@ class Conway
 end
 
 class Grid
-  attr_reader :width, :heigth, :fields
+  attr_reader :width, :heigth , :fields
 
-  def initalize(width, heigth)
+  def initialize(width, heigth)
     @width, @heigth = width, heigth
   end
 end
