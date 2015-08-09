@@ -14,3 +14,16 @@ class Grid
     @width, @heigth = width, heigth
   end
 end
+
+class Cell
+  attr_reader :value
+
+  def initialize(n)
+    @value = n
+  end
+
+  def empty?
+    value == 0
+  end
+end
+
