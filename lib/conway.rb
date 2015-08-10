@@ -12,13 +12,18 @@ class Grid
 
   def initialize(width, heigth)
     @width, @heigth = width, heigth
+		@fields = Array.new(width) do
+			Array.new(heigth) do
+				Cell.new
+			end
+		end
   end
 end
 
 class Cell
   attr_reader :value
 
-  def initialize(n)
+  def initialize(n = 0)
     @value = n
   end
 
