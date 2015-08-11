@@ -18,6 +18,10 @@ class Grid
 			end
 		end
   end
+
+	def each
+		fields.each
+	end
 end
 
 class Cell
