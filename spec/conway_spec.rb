@@ -13,9 +13,9 @@ describe Conway do
     end
     it "should have only empty cells." do
       @conway.grid.each do |row|
-	row.each do |cell|
+        row.each do |cell|
           expect(cell.empty?)
-	end
+        end
       end
     end
   end
