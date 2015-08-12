@@ -19,5 +19,11 @@ describe Conway do
       end
     end
   end
+
+  describe "when a game is started" do
+    it "should have X cells that are alive" do
+      # TODO add test condition
+    end		
+  end 
 end
 
