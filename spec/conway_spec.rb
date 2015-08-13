@@ -22,8 +22,14 @@ describe Conway do
 
   describe "when a game is started" do
     it "should have X cells that are alive" do
-      # TODO add test condition
-    end		
-  end 
+      number_of_alive_cells = 0
+      @conway.grid.each do |row|
+        row.each do |cell|
+          number_of_alive_cells += 1 if cell.empty?
+        end
+      end
+      expect(number_of_alive_cells).to be >= X # TODO replace X
+    end
+  end
 end
 
