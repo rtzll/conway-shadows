@@ -22,6 +22,7 @@ describe Conway do
 
   describe "when a game is started" do
     it "should have X cells that are alive" do
+			conway.start
       number_of_alive_cells = 0
       @conway.grid.each do |row|
         row.each do |cell|
