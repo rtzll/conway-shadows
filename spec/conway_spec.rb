@@ -11,10 +11,10 @@ describe Conway do
       expect(@conway.grid.width).to eq 53
       expect(@conway.grid.heigth).to eq 7
     end
-    it "should have only empty cells." do
+    it "should have only dead cells." do
       @conway.grid.each do |row|
         row.each do |cell|
-          expect(cell.empty?)
+          expect(cell.dead?)
         end
       end
     end

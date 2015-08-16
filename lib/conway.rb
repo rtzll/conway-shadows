@@ -37,8 +37,8 @@ class Cell
     @value = n
   end
 
-  def empty?
-    value == 0
+  def dead?
+    value <= 0
   end
 
   def alive?
