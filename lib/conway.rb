@@ -5,6 +5,12 @@ class Conway
   def initialize
     @grid = Grid.new 53, 7
   end
+
+  def start
+    number_of_living_cells = (grid.width * grid.heigth * 0.2).round
+    # TODO fill closure
+    number_of_living_cells.times { }
+  end
 end
 
 class Grid
@@ -33,6 +39,18 @@ class Cell
 
   def empty?
     value == 0
+  end
+
+  def alive?
+    value > 0
+  end
+
+  def increment
+    value += 1
+  end
+
+  def decrement
+    value -= 1
   end
 end
 
