@@ -21,8 +21,8 @@ describe Conway do
   end
 
   describe "when a game is started" do
-    it "should have 50 cells that are alive" do
-      conway.start
+    it "should have at least 50 cells that are alive" do
+      @conway.start
       number_of_alive_cells = 0
       @conway.grid.each do |row|
         row.each do |cell|
