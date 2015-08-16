@@ -26,7 +26,7 @@ describe Conway do
       number_of_alive_cells = 0
       @conway.grid.each do |row|
         row.each do |cell|
-          number_of_alive_cells += 1 if cell.empty?
+          number_of_alive_cells += 1 if cell.alive?
         end
       end
       expect(number_of_alive_cells).to be >= 50
