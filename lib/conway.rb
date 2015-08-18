@@ -8,8 +8,7 @@ class Conway
 
   def start
     number_of_living_cells = (grid.width * grid.heigth * 0.2).round
-    # TODO fill closure
-    number_of_living_cells.times { }
+    number_of_living_cells.times { grid.revive_at(rand(53), rand(7)) }
   end
 end
 
@@ -28,10 +27,15 @@ class Grid
   def each
     fields.each
   end
+
+  def revive_at(column_index, row_index)
+    cell = fields[column_index][row_index]
+    cell.increment if cell.dead?
+  end
 end
 
 class Cell
-  attr_reader :value
+  attr_accessor :value
 
   def initialize(n = 0)
     @value = n
