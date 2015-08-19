@@ -35,7 +35,7 @@ class Grid
 end
 
 class Cell
-  attr_accessor :value
+  attr_reader :value
 
   def initialize(n = 0)
     @value = n
@@ -50,11 +50,11 @@ class Cell
   end
 
   def increment
-    value += 1
+    @value += 1
   end
 
   def decrement
-    value -= 1
+    @value -= 1
   end
 end
 
